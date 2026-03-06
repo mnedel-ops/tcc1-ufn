@@ -1,0 +1,116 @@
+% ═══════════════════════════════════════════════════════════════
+% PREAMBLE — ALL PACKAGES & GLOBAL CONFIGURATION FOR TCC 1 UFN
+% ═══════════════════════════════════════════════════════════════
+
+% ── ENCODING & LANGUAGE ──────────────────────────────────────
+\usepackage[utf8]{inputenc}
+% UTF-8 encoding para caracteres em português (ã, ç, ê, etc.)
+
+\usepackage[T1]{fontenc}
+% T1 font encoding para hyphenação correta de palavras acentuadas
+
+\usepackage[brazilian]{babel}
+% Regras de hyphenação português brasileiro e formatação de data
+
+% ── TYPOGRAPHY ───────────────────────────────────────────────
+\usepackage{mathptmx}
+% Times New Roman para texto e matemática — padrão UFN
+
+% ── GEOMETRY (MARGINS UFN) ───────────────────────────────────
+\usepackage[
+  a4paper,
+  top=2.5cm,
+  bottom=2.5cm,
+  left=1.8cm,
+  right=1.8cm
+]{geometry}
+% Sobrescreve defaults do IEEEtran para atender margens UFN
+
+% ── FIGURES ──────────────────────────────────────────────────
+\usepackage{graphicx}
+% \includegraphics — figuras individuais da pasta /images
+
+\usepackage{subcaption}
+% \begin{subfigure} — figuras lado a lado (ex.: múltiplas views)
+
+% ── MATHEMATICS ──────────────────────────────────────────────
+\usepackage{amsmath}
+% align, equation, matrix environments — para fórmulas IA/IK
+
+\usepackage{amssymb}
+% \mathbb{R}, \forall, \exists — para notação formal
+
+% ── CITATIONS ────────────────────────────────────────────────
+\usepackage{cite}
+% Estilo IEEE com compressão numérica: [1]–[4] ao invés de [1][2][3][4]
+
+% ── CODE LISTINGS ────────────────────────────────────────────
+\usepackage{listings}
+\usepackage{xcolor}
+% Configure listings para código monoespacial com números de linha:
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=5pt,
+  backgroundcolor=\color{gray!10},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  rulecolor=\color{black!30},
+  tabsize=2,
+  captionpos=b,
+  breaklines=true,
+  breakatwhitespace=false,
+  keywordstyle=\color{blue!70}\bfseries,
+  commentstyle=\color{green!50!black}\itshape,
+  stringstyle=\color{red!60},
+  language=Python,
+  literate=
+    {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+    {ã}{{\~a}}1 {õ}{{\~o}}1 {ç}{{\c{c}}}1 {ñ}{{\~n}}1
+}
+% Bloco literate trata caracteres portugueses dentro de blocos de código
+
+% ── TABLES ───────────────────────────────────────────────────
+\usepackage{tabularx}
+% Colunas auto-expansíveis — necessário para tabela de cronograma TCC 2
+
+\usepackage{booktabs}
+% \toprule, \midrule, \bottomrule — regras profissionais (sem \hline)
+
+% ── PDF METADATA & HYPERLINKS ────────────────────────────────
+\usepackage[
+  pdftitle={TCC 1 — [TÍTULO DO TRABALHO]},
+  pdfauthor={[[NOME DO ALUNO]}],
+  pdfsubject={Trabalho de Conclusão de Curso — UFN},
+  pdfkeywords={[palavra1], [palavra2], [palavra3]},
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue!70!black,
+  bookmarks=true
+]{hyperref}
+% DEVE ser o ÚLTIMO pacote carregado — trata metadados PDF e refs clicáveis
+
+% ── CUSTOM ABNT COMMANDS ─────────────────────────────────────
+% ABNT NBR 10520 — Citação longa (> 3 linhas):
+% 4cm recuo esquerdo, fonte \small, espaçamento simples, sem aspas
+\newenvironment{citacaolonga}{%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{4cm}%
+    \setlength{\rightmargin}{0cm}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+  }%
+  \item\small\setstretch{1.0}%
+}{%
+  \end{list}%
+}
+% Uso: \begin{citacaolonga} texto da citação... \end{citacaolonga}
+
+% Macro de conveniência para nome institucional
+\newcommand{\UFN}{Universidade Franciscana (UFN)}
